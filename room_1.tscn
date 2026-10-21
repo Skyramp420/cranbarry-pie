@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clgyl7ap6jgsw" path="res://player.tscn" id="2_is5ow"]
 [ext_resource type="PackedScene" uid="uid://b0jlptj07p0b6" path="res://key.tscn" id="3_bq48c"]
 [ext_resource type="PackedScene" uid="uid://dhofyp7s7xnp8" path="res://inventory_ui.tscn" id="4_bq48c"]
+[ext_resource type="Script" uid="uid://dlcyyl6pr7pyu" path="res://chest.gd" id="5_yutty"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yutty"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -66,3 +67,17 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1870751, 0)
 
 [node name="InventoryUI" parent="Player" unique_id=911915983 instance=ExtResource("4_bq48c")]
+
+[node name="Chest" type="Node3D" parent="." unique_id=1143629856]
+transform = Transform3D(0.41595173, 0, 0.9093867, 0, 1, 0, -0.9093867, 0, 0.41595173, 3.108988, -0.078783035, 4.0718126)
+script = ExtResource("5_yutty")
+
+[node name="@CSGBox3D@19816" type="CSGBox3D" parent="Chest" unique_id=1896958180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+use_collision = true
+size = Vector3(1, 0.5, 0.8)
+
+[node name="@CSGBox3D@19817" type="CSGBox3D" parent="Chest" unique_id=1783569900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+use_collision = true
+size = Vector3(1, 0.2, 0.8)
