@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://8xrhgc3o0luh"]
 
+[ext_resource type="Texture2D" uid="uid://8x32e8wa2puh" path="res://Ceiling.png" id="1_3t5sg"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tohwg"]
 albedo_color = Color(0.25843492, 0.2571967, 0.23646289, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eg0p3"]
+albedo_color = Color(0.31896892, 0.10423022, 0.21460721, 1)
+albedo_texture = ExtResource("1_3t5sg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogq8d"]
+albedo_color = Color(0.7544304, 0.45654458, 0.2696516, 1)
 
 [node name="Room1_Scene" type="Node3D" unique_id=1531860573]
 
@@ -11,3 +20,15 @@ use_collision = true
 flip_faces = true
 size = Vector3(20, 4, 10)
 material = SubResource("StandardMaterial3D_tohwg")
+
+[node name="Ceiling" type="CSGBox3D" parent="Room" unique_id=901341187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0327768, 0)
+flip_faces = true
+size = Vector3(20, 0.1, 10)
+material = SubResource("StandardMaterial3D_eg0p3")
+
+[node name="Floor" type="CSGBox3D" parent="Room" unique_id=1615253476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0462632, 0)
+flip_faces = true
+size = Vector3(20, 0.1, 10)
+material = SubResource("StandardMaterial3D_ogq8d")
