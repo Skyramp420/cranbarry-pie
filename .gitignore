@@ -1,0 +1,28 @@
+# Godot 4.1+ generated cache and imported translations.
+.godot/
+*.translation
+
+# Exported builds. Keep export_presets.cfg in Git; do not put secrets in it.
+/builds/
+/exports/
+
+# Local editor and OS files.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.log
+*.blend1
+*.blend2
+
+# Local credentials, signing keys and environment files.
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.keystore
+
+# Keep project.godot, *.tscn, *.tres, *.gd, *.uid and *.import in Git.
