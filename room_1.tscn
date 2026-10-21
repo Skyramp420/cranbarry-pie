@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://8xrhgc3o0luh"]
 
 [ext_resource type="Texture2D" uid="uid://8x32e8wa2puh" path="res://Ceiling.png" id="1_3t5sg"]
+[ext_resource type="PackedScene" uid="uid://clgyl7ap6jgsw" path="res://player.tscn" id="2_is5ow"]
+[ext_resource type="PackedScene" uid="uid://b0jlptj07p0b6" path="res://key.tscn" id="3_bq48c"]
+[ext_resource type="PackedScene" uid="uid://dhofyp7s7xnp8" path="res://inventory_ui.tscn" id="4_bq48c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yutty"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_e6hjw"]
+sky_material = SubResource("ProceduralSkyMaterial_yutty")
+
+[sub_resource type="Environment" id="Environment_hrfef"]
+background_mode = 2
+sky = SubResource("Sky_e6hjw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tohwg"]
 albedo_color = Color(0.25843492, 0.2571967, 0.23646289, 1)
@@ -13,6 +27,9 @@ albedo_texture = ExtResource("1_3t5sg")
 albedo_color = Color(0.7544304, 0.45654458, 0.2696516, 1)
 
 [node name="Room1_Scene" type="Node3D" unique_id=1531860573]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891081541]
+environment = SubResource("Environment_hrfef")
 
 [node name="Room" type="CSGBox3D" parent="." unique_id=999894961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -32,3 +49,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0462632, 0)
 flip_faces = true
 size = Vector3(20, 0.1, 10)
 material = SubResource("StandardMaterial3D_ogq8d")
+
+[node name="Key" parent="Room" unique_id=1573715228 instance=ExtResource("3_bq48c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.974427, -1.5716419, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Room" unique_id=804710644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0574782)
+light_color = Color(0.44847143, 0.3804546, 0.24172539, 1)
+light_energy = 3.863
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=279216883]
+transform = Transform3D(0.59762514, 0, 0.80177563, 0, 1, 0, -0.80177563, 0, 0.59762514, 9.580212, 2.667725, 4.757313)
+current = true
+
+[node name="Player" parent="." unique_id=476221682 instance=ExtResource("2_is5ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1870751, 0)
+
+[node name="InventoryUI" parent="Player" unique_id=911915983 instance=ExtResource("4_bq48c")]

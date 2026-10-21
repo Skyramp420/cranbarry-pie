@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b0jlptj07p0b6"]
+
+[ext_resource type="Script" uid="uid://i83taow41qty" path="res://key.gd" id="1_up4cr"]
+[ext_resource type="Script" uid="uid://vignmrsletj1" path="res://key_model.gd" id="2_p0yg6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogq8d"]
+
+[node name="Key" type="Area3D" unique_id=1573715228]
+script = ExtResource("1_up4cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=800639087]
+shape = SubResource("BoxShape3D_ogq8d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1728321545]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2129067757]
+visible = false
+anchors_preset = -1
+offset_left = 367.0
+offset_top = 130.0
+offset_right = 737.0
+offset_bottom = 254.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=682336015]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 9.0
+offset_right = 341.0
+offset_bottom = 38.0
+text = "You found a key. Do you want to keep it?"
+
+[node name="ButtonYes" type="Button" parent="CanvasLayer/Panel" unique_id=1963106456]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 51.0
+offset_right = 99.0
+offset_bottom = 82.0
+text = "Yes"
+
+[node name="ButtonNo" type="Button" parent="CanvasLayer/Panel" unique_id=756980646]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 49.0
+offset_right = 295.0
+offset_bottom = 80.0
+text = "NO"
+
+[node name="KeyModel" type="Node3D" parent="." unique_id=1238536816]
+script = ExtResource("2_p0yg6")
+
+[node name="@CSGTorus3D@19816" type="CSGTorus3D" parent="KeyModel" unique_id=1903988977]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, -0.28)
+inner_radius = 0.05
+outer_radius = 0.1
+
+[node name="@CSGCylinder3D@19817" type="CSGCylinder3D" parent="KeyModel" unique_id=772493388]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 0.02
+height = 0.4
+
+[node name="@CSGBox3D@19818" type="CSGBox3D" parent="KeyModel" unique_id=559123073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.1)
+size = Vector3(0.02, 0.08, 0.1)
+
+[node name="@CSGBox3D@19819" type="CSGBox3D" parent="KeyModel/@CSGBox3D@19818" unique_id=2024074512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.1)
+operation = 2
+size = Vector3(0.04, 0.08, 0.04)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="CanvasLayer/Panel/ButtonYes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/ButtonNo" to="." method="_on_no_pressed"]
